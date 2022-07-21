@@ -1,0 +1,27 @@
+{
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [    // コンパイル対象外
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "commonjs",
+    "lib": ["esnext", "dom"], // ポリフィル
+    "strict": true,
+    "esModuleInterop": true,                    // CommonJS と ES Modules 間で相互運用可能なコードを出力
+    "skipLibCheck": true,                       // *.d.ts ファイルに対する型チェックをスキップする
+    "forceConsistentCasingInFileNames": true,   // import時にファイルパスの文字列で大文字小文字を区別する
+    "experimentalDecorators": true,             // decoratorsを使用
+    "resolveJsonModule": true,                  // .json拡張子のファイルをモジュールとしてインポート可能とする
+    "types": [    // 使用したいパッケージ
+      // "hammerjs"
+    ],
+
+    // 出力先などは webpack 側で指定するので本質的には必要なし
+    "sourceMap": true,
+    "outDir": "./htdocs",
+    "sourceRoot": "./src",
+  }
+}

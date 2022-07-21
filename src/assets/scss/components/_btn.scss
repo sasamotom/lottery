@@ -1,0 +1,17 @@
+@use "../abstracts" as *;
+
+.btn {
+  margin-top: 2em;
+  @include fontSize(16, 14);
+  a,
+  .btn_txt {
+    display: inline-block;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    background: #eee;
+    transition: 0.3s;
+    @include hover() {
+      background: #aea;
+    }
+  }
+}

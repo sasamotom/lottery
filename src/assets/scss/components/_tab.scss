@@ -1,0 +1,28 @@
+@use "../abstracts" as *;
+
+.tabContainer {
+  .tabBtnList {
+    display: flex;
+    .js-tabBtn {
+      padding: 1em;
+      cursor: pointer;
+      border: 1px solid #eee;
+      transform: 0.3s;
+      & + .js-tabBtn {
+        border-left: none;
+      }
+      &.-active {
+        background: $color01;
+      }
+    }
+  }
+  .tabContents {
+    .js-tabContent {
+      display: none;
+      transform: 0.3s;
+      &.-active {
+        display: block;
+      }
+    }
+  }
+}

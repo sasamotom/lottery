@@ -1,0 +1,130 @@
+@use "sass:map";
+@use "sass:math";
+@use "variables" as *;
+
+// ------------------------------------------------
+// 機能：メディアクエリ
+// 引数：$type      どのような範囲を指定するか
+//                  sp      SPサイズ
+//                  pc      PCサイズ
+//                  min     最小値を指定（指定値1〜∞）
+//                  max     最大値を指定（0〜指定値1）
+//                  fromto  指定した範囲（指定値1〜指定値2）
+//      $value1   １つ目の条件のpx数（$typeがmin,max,fromtoの場合のみ有効）
+//      $symbol1  １つ目の条件の不等号記号。'<='or'<'（$typeがmin,max,fromtoの場合のみ有効）
+//      $symbol2  ２つ目の条件の不等号記号。'<='or'<'（$typeがfromtoの場合のみ有効）
+//      $value2   ２つ目の条件のpx数（$typeがfromtoの場合のみ有効）
+// 使い方：「spサイズ」の場合は「@include mq() { }」
+//        「pcサイズ」の場合は「@include mq(pc) { }」
+//        「w <= 600」の場合は「@include mq(max, 600, "<=") { }」
+//        「600 < w」の場合は「@include mq(min, 600, "<") { }」
+//        「600 < w <= 700」の場合は「@include mq(fromto, 600, "<", "<=", 700) { }」
+// サンプルページ https://mediaquery.yellow2green.com/
+// ------------------------------------------------
+$spMaxPx: 768; // SPサイズの最大ピクセル数
+@mixin mq(
+  $type: sp,
+  $value1: 0,
+  $symbol1: "<=",
+  $symbol2: "<=",
+  $value2: 10000
+) {
+  @if $type == fromto {
+    // 2つの値を使って範囲指定をする場合
+    @if $symbol1 == "<" and $symbol2 == "<" {
+      // 範囲指定用（value1 < w < value2）
+      @media not screen and (max-width: $value1 + px) {
+        @media not screen and (min-width: $value2 + px) {
+          @content;
+        }
+      }
+    } @else if $symbol1 == "<" and $symbol2 == "<=" {
+      // 範囲指定用（value1 < w <= value2）
+      @media not screen and (max-width: $value1 + px) {
+        @media screen and (max-width: $value2 + px) {
+          @content;
+        }
+      }
+    } @else if $symbol1 == "<=" and $symbol2 == "<" {
+      // 範囲指定用（value1 <= w < value2）
+      @media screen and (min-width: $value1 + px) {
+        @media not screen and (min-width: $value2 + px) {
+          @content;
+        }
+      }
+    } @else {
+      // 範囲指定用（value1 <= w <= value2）
+      @media screen and (min-width: $value1 + px) and (max-width: $value2 + px) {
+        @content;
+      }
+    }
+  } @else {
+    // １つの値を使って範囲指定する場合
+    $reverse: "";
+    $widthType: "max";
+    @if $type == min {
+      @if $symbol1 == "<" {
+        // 最小値のみ指定用（value1 < w）
+        $reverse: "not";
+      } @else {
+        // 最小値のみ指定用（value1 <= w）
+        $widthType: "min";
+      }
+    } @else if $type == max {
+      @if $symbol1 == "<" {
+        // 最大値のみ指定用（w < value1）
+        $reverse: "not";
+        $widthType: "min";
+      } @else {
+        // 最大値のみ指定用（w <= value1）
+        // 規定値のままでOK
+      }
+    } @else if $type == pc {
+      // PC用（spMaxサイズ < w）
+      $reverse: "not";
+      $value1: $spMaxPx;
+    } @else {
+      // SP用（w <= spMaxサイズ）
+      $value1: $spMaxPx;
+    }
+    @media #{$reverse} screen and (#{$widthType}-width: $value1 + px) {
+      @content;
+    }
+  }
+}
+
+// ------------------------------------------------
+// 機能：ホバーが有効な場合のみホバー装飾を有効とする
+// ------------------------------------------------
+@mixin hover() {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+  &:focus-visible {
+    @content;
+  }
+}
+
+// --------------------------------------------
+// 機能：画面幅に合わせて文字サイズを調整する
+//      （最大値をPC版のフォントサイズ、最小値をSP版のフォントサイズとする）
+// 引数：$pcSize    PC版のフォントサイズ
+//      $spSize    SP版のフォントサイズ
+// 注意：getPcVw()とgetSpVw()関数の$viewportの値をデザインデータに合わせること
+// --------------------------------------------
+@function getPcVw($px, $viewport: 1100) {
+  $vw: math.div(100, $viewport); // 1pxあたりのvw数
+  @return $vw * $px * 1vw; // 1pxあたりのvw数(vw/px) * フォントサイズ(px)
+}
+@function getSpVw($px, $viewport: 375) {
+  $vw: math.div(100, $viewport);
+  @return $vw * $px * 1vw;
+}
+@mixin fontSize($pcSize, $spSize) {
+  font-size: clamp(($spSize * 1px), getPcVw($pcSize), ($pcSize * 1px));
+  @include mq(sp) {
+    font-size: clamp(($spSize * 1px), getSpVw($spSize), ($pcSize * 1px));
+  }
+}

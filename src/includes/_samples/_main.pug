@@ -1,0 +1,64 @@
+main.main
+  section.sec-links
+    .container
+      .btn: a(href="#secAccordion") あこーでぃおん
+      .btn: a(href="#secTab") たぶ１
+      .btn: a(href="#secTab2") たぶ２
+      .btn: a(href="#secModal") もーだる
+
+  section.sec-accordion#secAccordion
+    .container
+      h2 アコーディオン
+      .acordionContainer
+        dl.js-acdContainer
+          dt.js-acdBtn 質問1
+          dd.js-acdContent Elit ipsum id excepteur nisi ea ex cillum est sint duis. Id aliquip reprehenderit cupidatat Lorem deserunt Lorem id et elit mollit. Aliqua et nostrud enim mollit. Aliqua dolore duis in ad. Esse excepteur voluptate occaecat deserunt eu voluptate elit laboris aute amet dolor laborum proident. Labore deserunt dolore deserunt id eu duis duis. Ad incididunt commodo culpa magna id id fugiat aute consequat sint dolor eu labore.
+        dl.js-acdContainer
+          dt.js-acdBtn 質問2
+          dd.js-acdContent Elit excepteur officia dolore enim consectetur eiusmod non anim laborum. Ea ex laboris ea eu voluptate cupidatat. Ea commodo esse ullamco quis.
+
+  section.sec-tab#secTab
+    .container
+      h2 タブ１
+      .tabContainer.js-tabContainer
+        ul.tabBtnList
+          li.js-tabBtn(data-tabId="tab1").-active TAB1
+          li.js-tabBtn(data-tabId="tab2") TAB2
+        ul.tabContents
+          li.js-tabContent#tab1.-active
+            p 1Deserunt ipsum cupidatat sunt consectetur eiusmod duis. Dolore do occaecat do ea non minim ea reprehenderit consequat dolor occaecat. Est minim ipsum eu nisi excepteur. Do proident qui ut sunt. Mollit anim ad do amet ea amet laboris id aute ea. Reprehenderit magna laboris nulla magna sunt ex.
+          li.js-tabContent#tab2
+            p 2Veniam cupidatat officia enim ut in. Anim incididunt consequat nisi consequat cupidatat laborum fugiat. In enim ipsum eiusmod nisi enim non ex enim et adipisicing elit. Proident culpa velit tempor ea laboris veniam sint ipsum. Ea culpa dolore aliqua est amet aliqua proident amet duis enim proident laborum voluptate mollit.
+  section.sec-tab#secTab2
+    .container
+      h2 タブ２
+      .tabContainer.js-tabContainer
+        ul.tabBtnList
+          li.js-tabBtn(data-tabId="tab3").-active TAB3
+          li.js-tabBtn(data-tabId="tab4") TAB4
+        ul.tabContents
+          li.js-tabContent#tab3.-active
+            p 3Deserunt ipsum cupidatat sunt consectetur eiusmod duis. Dolore do occaecat do ea non minim ea reprehenderit consequat dolor occaecat. Est minim ipsum eu nisi excepteur. Do proident qui ut sunt. Mollit anim ad do amet ea amet laboris id aute ea. Reprehenderit magna laboris nulla magna sunt ex.
+          li.js-tabContent#tab4
+            p 4Veniam cupidatat officia enim ut in. Anim incididunt consequat nisi consequat cupidatat laborum fugiat. In enim ipsum eiusmod nisi enim non ex enim et adipisicing elit. Proident culpa velit tempor ea laboris veniam sint ipsum. Ea culpa dolore aliqua est amet aliqua proident amet duis enim proident laborum voluptate mollit.
+
+  section.sec-modal#secModal
+    .container
+      h2 モーダル
+      .modalContainer
+        p.btn: span.btn_txt(data-micromodal-trigger="modal-1") モーダル
+        .modal#modal-1(aria-hidden="true")
+          .modal_overlay(tabindex="-1" data-micromodal-close)
+            .modal_container(role="dialog" aria-modal="true" aria-labelledby="modal")
+              .modal_content
+                p モーダルの中身
+              .modal_closeBtn(aria-label="Close modal" data-micromodal-close)
+
+  section.sec-texts
+    .container
+      p Labore et proident commodo adipisicing consequat. Do officia consectetur enim nostrud fugiat nisi aute laborum. Ut culpa enim et ipsum anim laboris enim velit. Veniam ex ipsum voluptate esse laborum consequat in do anim in cillum minim mollit cillum. Mollit fugiat non consectetur enim fugiat magna.
+      p Voluptate aliquip deserunt culpa officia et. Cupidatat nostrud esse aute irure fugiat magna laboris aliqua. Qui sint quis pariatur labore quis ut cupidatat.
+      p Labore et proident commodo adipisicing consequat. Do officia consectetur enim nostrud fugiat nisi aute laborum. Ut culpa enim et ipsum anim laboris enim velit. Veniam ex ipsum voluptate esse laborum consequat in do anim in cillum minim mollit cillum. Mollit fugiat non consectetur enim fugiat magna.
+      p Voluptate aliquip deserunt culpa officia et. Cupidatat nostrud esse aute irure fugiat magna laboris aliqua. Qui sint quis pariatur labore quis ut cupidatat.
+      p Labore et proident commodo adipisicing consequat. Do officia consectetur enim nostrud fugiat nisi aute laborum. Ut culpa enim et ipsum anim laboris enim velit. Veniam ex ipsum voluptate esse laborum consequat in do anim in cillum minim mollit cillum. Mollit fugiat non consectetur enim fugiat magna.
+      p Voluptate aliquip deserunt culpa officia et. Cupidatat nostrud esse aute irure fugiat magna laboris aliqua. Qui sint quis pariatur labore quis ut cupidatat.

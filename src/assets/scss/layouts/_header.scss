@@ -1,0 +1,129 @@
+@use "../abstracts" as *;
+
+// ヘッダー
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: none;
+  padding: 1rem 3rem;
+  background-color: $color01;
+  @include mq() {
+    height: 6rem;
+    padding: 0 3%;
+  }
+  .logo {
+    width: 20rem;
+    @include mq() {
+      width: 15rem;
+    }
+  }
+}
+
+// グローバルナビゲーション
+.gnavContainer {
+  max-width: calc(100% - 25rem);
+  @include mq() {
+    display: contents;
+    max-width: none;
+  }
+  // グローバルナビゲーションボタン
+  .gnavBtn {
+    display: none;
+    @include mq() {
+      position: relative;
+      z-index: 11;
+      display: block;
+      width: 4rem;
+      height: 4rem;
+      cursor: pointer;
+      background: #fff;
+    }
+    &_line {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 70%;
+      height: 1px;
+      background: $colorText;
+      transition: 0.3s;
+      transform: translate(-50%, -50%);
+      &::before,
+      &::after {
+        position: absolute;
+        top: 0.7rem;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        content: "";
+        background: $colorText;
+        transition: 0.3s;
+      }
+      &::after {
+        top: -0.7rem;
+      }
+    }
+  }
+  &.-opened {
+    .gnavBtn_line {
+      background: transparent;
+      &::before,
+      &::after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+      &::after {
+        transform: rotate(45deg);
+      }
+    }
+  }
+  // グローバルナビゲーションリンクリスト
+  .gnav {
+    margin-right: 30px;
+    @include mq() {
+      position: absolute;
+      top: 6rem; // SP版ヘッダーの高さ
+      left: 0;
+      display: none;
+      width: 100%;
+      max-height: calc(100vh - 6rem);
+      max-height: calc((var(--vh, 1vh) * 100) - 6rem);
+      margin-right: 0;
+      overflow: auto;
+      overscroll-behavior-y: contain;
+    }
+  }
+  .gnavList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3em 1em;
+    @include mq() {
+      flex-direction: column;
+      gap: 0;
+      li {
+        border-bottom: 1px solid #aaa;
+        &:first-child {
+          border-top: 1px solid #aaa;
+        }
+      }
+    }
+    a {
+      display: block;
+      padding: 0.5em;
+      font-size: 1.4rem;
+      @include mq() {
+        width: 100%;
+        padding: 1.5em;
+        text-align: center;
+        background: #fff;
+      }
+    }
+  }
+}

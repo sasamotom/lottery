@@ -1,0 +1,42 @@
+@use "../abstracts" as *;
+
+.acordionContainer {
+  dl {
+    + dl {
+      margin-top: 0.5em;
+    }
+    dt {
+      position: relative;
+      padding: 0.4em;
+      cursor: pointer;
+      background: $color01;
+      &::before,
+      &::after {
+        position: absolute;
+        top: 50%;
+        right: 0.5em;
+        display: block;
+        width: 0.8em;
+        height: 1px;
+        content: "";
+        background: $colorText;
+        transition: 0.3s;
+      }
+      &::after {
+        transform: rotate(-90deg);
+      }
+    }
+    dd {
+      display: none;
+      padding: 0.4em;
+      line-height: 1.2;
+    }
+    &.-opened {
+      dt {
+        &::after {
+          transform: none;
+        }
+      }
+    }
+  }
+}

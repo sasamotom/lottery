@@ -1,0 +1,97 @@
+@use "../abstracts" as *;
+
+// モーダル
+.modal {
+  display: none;
+  &.is-open {
+    display: block;
+  }
+  &_overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 8rem 1.5rem 2rem;
+    overflow: hidden;
+    background: #fff;
+    @include mq() {
+      padding-top: 5rem;
+    }
+  }
+  &_container {
+    position: relative;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+  &_closeBtn {
+    position: absolute;
+    top: -5rem;
+    right: 0;
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+    @include mq() {
+      top: -4rem;
+      width: 2.8rem;
+      height: 2.8rem;
+    }
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: 5.3rem;
+      height: 1px;
+      content: "";
+      background: $colorText;
+      @include mq() {
+        width: 4rem;
+      }
+    }
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+}
+
+.modal[aria-hidden="false"] .modal_overlay {
+  animation: mmfadeIn 0.25s;
+}
+.modal[aria-hidden="false"] .modal_container {
+  animation: mmfadeIn 0.5s;
+}
+.modal[aria-hidden="true"] .modal_overlay {
+  animation: mmfadeOut 0.25s;
+}
+.modal[aria-hidden="true"] .modal_container {
+  animation: mmfadeOut 0.5s;
+}
+@keyframes mmfadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes mmfadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.modal_content p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  background: #eee;
+}
