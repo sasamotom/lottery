@@ -1,0 +1,68 @@
+//- ログイン画面
+
+.loginContainer
+  .container
+    .inputContainer
+      ul.boxImage.-wire
+        li.front
+          span.no
+          span.name#loginBoxText Please enter your name.
+        li
+        li
+        li
+        li
+        li
+      .loginArea#loginArea
+        dl.rowText
+          dt: label(for="yourName") YOUR NAME
+          dd: input(type="text" name="your_name")#yourName
+        button(type="button").btn.-border#startBtn START!!!!!
+      .menuArea#menuArea
+        ul.menuBtns
+          li: button(type="button").btn.-border#drawBtn ----- DRAW LOTS -----
+          li: button(type="button").btn.-border#addBtn +++++ ADD LOTS +++++
+          li: button(type="button").btn.-border#renameBtn RENAME BOXES!!!!!
+          li: button(type="button").btn.-border#showBtn SHOW DATA!!!!!
+
+      //- .boxesArea
+        ul.boxImage.-small
+          li.front
+            span.no 1
+          li
+          li
+          li
+          li
+          li
+        ul.boxImage.-small
+          li.front
+            span.no 2
+          li
+          li
+          li
+          li
+          li
+        ul.boxImage.-small
+          li.front
+            span.no 3
+          li
+          li
+          li
+          li
+          li
+        ul.boxImage.-small
+          li.front
+            span.no 4
+          li
+          li
+          li
+          li
+          li
+        ul.boxImage.-small
+          li.front
+            span.no 5
+          li
+          li
+          li
+          li
+          li
+

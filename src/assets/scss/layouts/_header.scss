@@ -2,27 +2,12 @@
 
 // ヘッダー
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: none;
-  padding: 1rem 3rem;
-  background-color: $color01;
-  @include mq() {
-    height: 6rem;
-    padding: 0 3%;
-  }
-  .logo {
-    width: 20rem;
-    @include mq() {
-      width: 15rem;
-    }
+  padding: 1rem 0;
+  &_ttl {
+    font-family: $fontEn;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 1px 1px $color01, 2px 2px $color02;
   }
 }
 

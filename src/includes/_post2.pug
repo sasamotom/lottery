@@ -1,0 +1,44 @@
+//- くじを追加する
+.postContainer.input
+  .container
+    form(method="POST" action="https://script.google.com/macros/s/AKfycbyKL5CXWiBE1vm31Z2o922KSsidt2MWQaJN9iMvhLmk_R9OfI6ACa2xoSU86_jgSYQM/exec")#form
+      input(type="hidden" name="kind" value="add_text")
+      input(type="hidden" name="post_user" value="megumi")
+      input(type="hidden" name="box_no" value="" id="boxId")
+
+      .inputContainer
+        //- 箱ボタン領域
+        .boxesArea.-selectable#selectableBoxes
+        //- 選択中の箱
+        ul.boxImage#boxImage
+          li.front
+            span.no
+            span.name
+            p.percent
+              span.unselected
+              span.allCnt
+          li
+          li
+          li
+          li
+          li
+        //- 送信するテキスト
+        dl.rowText
+          dt: label(for="postText") TEXT
+          dd: textarea(name="post_text")#postText
+        //- 送信ボタン
+        button(type="button").btn#sendBtn ADD!!!!!
+        //- 結果領域
+        p.result#result
+      dl.logTtl#logTtl
+        dt.no BOX
+        dd.time TIME
+        dd.text TEXT OF LOTS
+      dl.logArea#logAdd
+        //- dt.no(style="color: #f00";) 1
+        //- dd.time 08/19 16:30
+        //- dd.text くじの内容テキスト
+
+    button(type="button").btn.-back#backToMenu
+      span.arrow
+      | BACK to MENU

@@ -6,11 +6,34 @@ html(lang="ja")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     meta(name="format-detection", content="telephone=no")
     meta(name="description", content="")
-    title Document
+    meta(name="robots" content="noindex")
+    title LOTTERY
+    link(rel="icon" href="/assets/images/favicon.ico" sizes="any")
+    link(rel="icon" href="/assets/images/icon.svg" type="image/svg+xml")
+    link(rel="apple-touch-icon" href="/assets/images/apple-touch-icon-180x180.png")
+    link(rel="manifest" href="/assets/images/manifest.webmanifest")
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Righteous&display=swap" rel="stylesheet")
     link(rel="stylesheet", href="/assets/css/app.css")
   body
     .wrapper
-      include ./includes/_samples/_header
-      include ./includes/_samples/_main
+      //- 参考：上田さんのネタ発表（スプシをDB代わりにする）
+      //- https://halved-payment-953.notion.site/DB-26ea1fa9dce140c4ad4fbe150a5205f9
+
+      //- デプロイID　　AKfycbyKL5CXWiBE1vm31Z2o922KSsidt2MWQaJN9iMvhLmk_R9OfI6ACa2xoSU86_jgSYQM
+      //- ウェブアプリ　https://script.google.com/macros/s/AKfycbyKL5CXWiBE1vm31Z2o922KSsidt2MWQaJN9iMvhLmk_R9OfI6ACa2xoSU86_jgSYQM/exec
+      //- ライブラリ　　https://script.google.com/macros/library/d/1SQm9PceZO4dpNYtG_eQ7U-b7U_SM4mw7Cgnsws9WXFHjO58-T40W1D5_/1
+      //- https://analogstd.com/pc/javascript/method-post-with-xhr/
+
+      include ./includes/_header
+      //- include ./includes/_samples/_main
+      main.main
+        include ./includes/_all
+        //- include ./includes/_login
+        //- include ./includes/_post
+        //- include ./includes/_renameBox
+        //- include ./includes/_draw2
+        //- include ./includes/_get
 
     script(src="/assets/js/app.js")

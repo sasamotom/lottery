@@ -1,17 +1,86 @@
 @use "../abstracts" as *;
+@use "sass:math";
 
 .btn {
-  margin-top: 2em;
-  @include fontSize(16, 14);
-  a,
-  .btn_txt {
-    display: inline-block;
-    padding: 0.5em 1em;
-    cursor: pointer;
-    background: #eee;
-    transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 5rem;
+  margin: 2rem auto 0;
+  font-family: $fontEn;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0;
+  background: var(--box-color);
+  border: none;
+  border-radius: none;
+  transition: color 0.3s;
+  @include hover() {
+    color: $colorText;
+  }
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  &.-border {
+    color: $colorText;
+    background: #fff;
+    border-top: 4px solid $color01;
+    border-right: 4px solid $color03;
+    border-bottom: 4px solid $color02;
+    border-left: 4px solid $color04;
+  }
+  &.-back {
+    justify-content: flex-start;
+    width: auto;
+    padding: 0;
+    margin-top: 6rem;
+    margin-left: 0;
+    font-weight: normal;
+    color: $colorText;
+    background: none;
     @include hover() {
-      background: #aea;
+      .arrow {
+        transform: translate(-10%);
+      }
+    }
+  }
+  .arrow {
+    $lineWidth: 2px;
+    $arrowLength: 60%;
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
+    background: #fff;
+    border: $lineWidth solid $color01;
+    border-radius: 50%;
+    transition: transform 0.3s;
+    &::before,
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+    }
+    &::before {
+      top: 50%;
+      left: 50%;
+      width: $arrowLength;
+      height: $lineWidth;
+      background: $color03;
+      transform: translate(-50%, -50%);
+    }
+    &::after {
+      top: 50%;
+      $l: (math.div((2 * math.sqrt(2) - 5), 6));
+      left: calc(50% - (#{$lineWidth} / 2) + #{$l} * #{$arrowLength});
+      width: calc(#{$arrowLength} * 2 / 3);
+      height: calc(#{$arrowLength} * 2 / 3);
+      border-bottom: $lineWidth solid $color04;
+      border-left: $lineWidth solid $color02;
+      transform: translate(0, -50%) rotate(45deg);
     }
   }
 }

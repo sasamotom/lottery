@@ -1,10 +1,18 @@
 // Fonts
-$baseFontFamily: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka,
-  "游ゴシック", "Yu Gothic", YuGothic, "メイリオ", Meiryo, "ＭＳ Ｐゴシック",
-  "MS PGothic", sans-serif;
+$baseFontFamily: "Noto Sans JP", "ヒラギノ角ゴ Pro W3",
+  "Hiragino Kaku Gothic Pro", Osaka, "游ゴシック", "Yu Gothic", YuGothic,
+  "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 
 // Colors
 $colorText: #333;
-$color01: #efe;
-$color02: #f8fef8;
-$color03: #ee0;
+// New & Happy Color Scheme
+$color01: #ffde05;
+$color02: #93e01f;
+$color03: #19a3fe;
+$color04: #a955f2;
+$color05: #ff0f77;
+
+$colorFrame: #aaa;
+
+// Font
+$fontEn: "Righteous", $baseFontFamily;

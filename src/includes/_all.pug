@@ -1,0 +1,88 @@
+//- ログイン画面
+.loginContainer#FirstArea
+  .container
+    .inputContainer
+      ul.boxImage.-wire
+        li.front
+          span.no
+          span.name#loginBoxText Please enter your name.
+        li
+        li
+        li
+        li
+        li
+      .loginArea#loginArea
+        dl.rowText
+          dt: label(for="yourName") YOUR NAME
+          dd: input(type="text" name="your_name" value="")#yourName
+        button(type="button").btn.-border#startBtn START!!!!!
+      .menuArea#menuArea
+        ul.menuBtns
+          li: button(type="button").btn.-border#drawBtn ----- DRAW LOTS -----
+          li: button(type="button").btn.-border#addBtn +++++ ADD LOTS +++++
+          li: button(type="button").btn.-border#renameBtn RENAME BOXES!!!!!
+          li: button(type="button").btn.-border#showBtn SHOW DATA!!!!!
+
+.mainArea#mainArea
+  .container
+    form#form
+      input(type="hidden" name="kind" value="add_text")
+      input(type="hidden" name="post_user" value="")
+      input(type="hidden" name="box_no" value="" id="boxId")
+
+      .inputContainer
+        //- 箱ボタン領域
+        .boxesArea.-selectable#selectableBoxes
+        //- 選択中の箱
+        ul.boxImage#boxImage
+          li.front
+            span.no
+            span.name
+            p.percent
+              span.unselected
+              span.allCnt
+          li
+          li
+          li
+          li
+          li
+        //- 送信するテキスト
+        dl.rowText#postTextRow
+          dt: label(for="postText") TEXT
+          dd: textarea(name="post_text")#postText
+        //- 送信ボタン
+        button(type="button").btn#sendBtn ADD!!!!!
+        //- 結果領域
+        p.result#result
+
+      //- ログ
+      #logAddArea
+        dl.logTtl
+          dt.no BOX
+          dd.time TIME
+          dd.text TEXT OF LOTS
+        dl.logArea#logAdd
+      #logDrawArea
+        dl.logTtl
+          dt.no BOX
+          dd.time TIME
+          dd.text TEXT OF LOTS
+        dl.logArea#logDraw
+      //- 取得したデータ
+      #AllLotsData
+        p.tableName#tableName
+          span.no
+          span.name
+        table.tableData
+          thead
+            tr
+              th.time 登録時間
+              th.user 登録ユーザー
+              th.text 登録内容
+              th.draw 引いたユーザー
+          tbody#tableBody
+
+    //- メニューに戻るボタン
+    button(type="button").btn.-back#backToMenu
+      span.arrow
+      | BACK to MENU

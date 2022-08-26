@@ -1,0 +1,27 @@
+//- くじをひく
+.postContainer.input
+  .container
+    form(method="POST" action="https://script.google.com/macros/s/AKfycbyKL5CXWiBE1vm31Z2o922KSsidt2MWQaJN9iMvhLmk_R9OfI6ACa2xoSU86_jgSYQM/exec")#form
+      input(type="hidden" name="kind" value="draw_lots")
+      input(type="hidden" name="post_user" value="megumi")
+      .inputContainer
+        dl.rowSelect
+          dt: label(for="boxNo") LOTTERY BOX
+          dd
+            select#boxNo(name="box_no")
+        ul.boxImage#boxImage
+          li.front
+            span.no
+            span.name
+          li
+          li
+          li
+          li
+          li
+        button(type="button").btn#sendBtn DRAW LOTS!!!!!!!!!!!
+        p.result#result
+      ul.resultLotsList#resultLotsList
+    button(type="button").btn.-back#backToMenu
+      span.arrow
+      | BACK to MENU
+
